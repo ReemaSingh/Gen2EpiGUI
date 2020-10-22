@@ -61,4 +61,72 @@
         "cp /home/user/Desktop/Gen2Epi_Scripts/Gen2EpiGUI.pl /home/user/Desktop/"
         This will create an icon on the Desktop. Double click on the icon to run the program. To use the user-friendly version of the pipeline, follow the instructions given in “UserManual.pdf” and “IntroductoryDemo.pdf”.    
 
+# How to use Gen2EpiGUI via Commandline
+
+1. Prepare a tab-limited input file describing the full name and the paired-end read files, e.g.,
+
+        WHO-F WHO-F_S2_L001_R1_001.fastq.gz WHO-F_S2_L001_R2_001.fastq.gz
+        WHO-G WHO-G_S3_L001_R1_001.fastq.gz WHO-G_S3_L001_R2_001.fastq.gz
+        WHO-K WHO-K_S4_L001_R1_001.fastq.gz WHO-K_S4_L001_R2_001.fastq.gz
+        WHO-L WHO-L_S5_L001_R1_001.fastq.gz WHO-L_S5_L001_R2_001.fastq.gz
+        
+First column = Sample ID
+
+Second Column = First fastq read pair
+
+Third Column = Second fastq read pair
+
+Note: Make sure to put all the fastq reads in the same folder.
+
+If you have thousands of samples then the input file in the above-mentioned format can be prepared by using the following script:      
+
+        “perl Prepare_Input.pl <path-to-fastq-files> <number e.g 5> <Output directory>”
+
+For more information, please see “Gen2Epi-GUI-REFERENCE_GUIDE.pdf”
+
+2. Create an output directory and perform quality check and trimming using following commands
+
+        “mkdir Output” 
+        “perl WGS_SIBP_P1.pl /home/user/Desktop/Test_DATA/Input /home/user/Desktop/Test_DATA/WHO_Data both Output 3 3 4:15 30”
+        
+3. For de-novo assembly    
+
+        “perl WGS_SIBP_P2.pl /home/user/Desktop/Test_DATA/Input Output/Trimming trimmed 2 Output”
+        
+4. For chromosome scaffolding
+
+        “Perl WGS_SIBP_P3-Chr-C1.pl /home/user/Desktop/Test_DATA/Input /home/user/Desktop/Test_DATA/WHO_Full_Reference_genome/Chromosome /home/user/Desktop/Gen2Epi_Scripts/Output/Chrom_AssemblyTrimmedReads /home/user/Desktop/Test_DATA/WHO_Genome_Annotation/Chromosome 1 TXT Output”
+
+5. For plasmid-type identification
+
+        “Perl WGS_SIBP_P3-Plas_C1.pl /home/user/Desktop/Test_DATA/Input Output/Plasmid_AssemblyTrimmedReads 1 /home/user/Desktop/Test_DATA/Plasmid.fasta Output”
+        
+6.  For epidemiological analysis and AMR prediction of the assembled scaffolds: Please make sure to delete the existing output file before running the following commands.
+
+        a.	NG-MAST
+        
+                “perl MASTdbUpdate.pl”
+                “perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds NGMAST Output”
+	
+        b.	NG-MLST
+ 
+ 	        “perl MLSTdbUpdate.pl”
+                 “perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds MLST Output MLST-Genes.fasta MLST_alleles.fasta pubMLST_profile.txt”
+	
+	        Please Note: In case you encounter “BLAST database index” error then make sure to build the blast database for “MLST-Genes.fasta” using the following command:
+	
+                 “makeblastdb –in MLST-Genes.fasta –db nucl”
+	
+         c.	NG-STAR	
+ 
+ 	        “perl ngSTARdb.pl”
+                “perl NgSTARmeta.pl”
+                 “perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds ngstar Output AMR-Genes-NgStar.fasta AMR-Genes-NgStar-alleles.fasta”	
+	
+        d.	Chromosome-mediated Tetracycline Resistance	
+
+                “perl TetRes.pl rpsJ.fasta Output/Chr_Scaffolds/All_Sequences Output”
+                “perl SeqProt.pl Output”
+
+
 
