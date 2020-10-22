@@ -1,13 +1,64 @@
-# Gen2EpiGUI
-Graphical User Interface (GUI) for the Gen2Epi computational pipeline named Gen2EpiGUI. Gen2Epi facilitates an understandable analysis of N. gonorrhoeae WGS data for users with limited bioinformatics skills.
+# Gen2EpiGUI: User-Friendly Pipeline for Analyzing Whole-Genome Sequencing Data for Epidemiological Studies of Neisseria gonorrhoeae
 
-# Programming Language
+# Requirements
 
-Perl
+1. Perl V5.16.3 or higher
 
-# Website
+2. Install Perl module ‘Tk’ and required dependencies
 
-ftp://ftp.cs.usask.ca/pub/combi
+3. Install the following programs and make them executable
 
-# Publication
-Singh R, Yarmovich T, Kusalik A, Dillon JR. Gen2EpiGUI: User-friendly Pipeline for Analyzing Whole Genome Sequencing Data for Epidemiological Studies of Neisseria gonorrhoeae. Sexually Transmitted Diseases. 2020 Jun 2.
+        a.	FastQC
+        b.	MultiQC
+        c.	Trimmomatic
+        d.	Kraken
+        e.	Bowtie2
+        f.	SPAdes
+        g.	BBMap
+        h.	Ragout
+        i.	Prodigal
+        j.	QUAST
+        k.	BLAST
+        l.	EMBOSS
+        m.	NGMASTER
+        
+4. If the installed programs are not executable, then all required softwares should be in path
+
+        a.	export PATH=$PATH:/installation-path/FastQC
+        b.	export PATH=$PATH:/installation-path/Trimmomatic-0.36
+        c.	export PATH=$PATH:/installation-path/SPAdes-3.11.1-Linux/bin
+        d.	export PATH=$PATH:/installation-path/SPAdes-3.11.1-Linux/share
+        e.	export PATH=$PATH:/installation-path/bbmap/
+        f.	export PATH=$PATH:/installation-path/ngmaster/
+        g.	export PATH=$PATH:/installation-path/x86_64
+        h.	export PATH=$PATH:/installation-path/ncbi-blast-2.6.0+/bin/
+        i.	export PATH=$PATH:/installation-path/EMBOSS-6.6.0/bin
+        j.	export PATH=$PATH:/installation-path/Sibelia-master
+        k.	export PATH=$PATH:/installation-path/Sibelia-master/bin
+        l.	export PATH=$PATH:/installation-path/Sibelia-master/bin/bin
+        m.	export PATH=$PATH:/installation-path/Sibelia-master/bin/lib
+        n.	export PATH=$PATH:/installation-path/Sibelia-master/bin/share
+        o.	export PATH=$PATH:/installation-path/fenderglass-Ragout-71562fc
+        p.	export PATH=$PATH:/installation-path/quast-4.5
+        q.	export PATH=$PATH:/installation-path/Prodigal-2.6.3
+        r.	export PATH=$PATH:/installation-path/bowtie2-2.3.2
+
+        Alternately, users can also copy the above-mentioned commands [a-r] in “.bashrc” and then set the path in the current working directory by running the following command 
+
+        “source .bashrc” 
+        
+5. Copy the test dataset in the current working directory under   
+
+        “/home/user/Desktop/Test_DATA”
+6. Copy the Gen2Epi_Scripts-GUI folder in your current working directory.
+
+7. Open terminal (Applications->Favorites->Terminal) and cd into
+
+        “/home/user/Desktop/Gen2Epi_Scripts“
+        
+8. Copy the “Gen2EpiGUI.pl” script on the Desktop.
+
+        "cp /home/user/Desktop/Gen2Epi_Scripts/Gen2EpiGUI.pl /home/user/Desktop/"
+        This will create an icon on the Desktop. Double click on the icon to run the program. To use the user-friendly version of the pipeline, follow the instructions given in “UserManual.pdf” and “IntroductoryDemo.pdf”.    
+
+
