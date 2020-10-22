@@ -105,28 +105,38 @@ For more information, please see “Gen2Epi-GUI-REFERENCE_GUIDE.pdf”
 
         a.	NG-MAST
         
-                “perl MASTdbUpdate.pl”
-                “perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds NGMAST Output”
+                	“perl MASTdbUpdate.pl”
+                	“perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds NGMAST Output”
 	
         b.	NG-MLST
  
- 	        “perl MLSTdbUpdate.pl”
-                 “perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds MLST Output MLST-Genes.fasta MLST_alleles.fasta pubMLST_profile.txt”
+ 	        	“perl MLSTdbUpdate.pl”
+                	“perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds MLST Output MLST-Genes.fasta MLST_alleles.fasta pubMLST_profile.txt”
 	
 	        Please Note: In case you encounter “BLAST database index” error then make sure to build the blast database for “MLST-Genes.fasta” using the following command:
 	
-                 “makeblastdb –in MLST-Genes.fasta –db nucl”
+                	 “makeblastdb –in MLST-Genes.fasta –db nucl”
 	
          c.	NG-STAR	
  
- 	        “perl ngSTARdb.pl”
-                “perl NgSTARmeta.pl”
-                 “perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds ngstar Output AMR-Genes-NgStar.fasta AMR-Genes-NgStar-alleles.fasta”	
+ 	        	“perl ngSTARdb.pl”
+                	“perl NgSTARmeta.pl”
+                 	“perl WGS_SIBP_P4_Epi.pl /home/user/Desktop/Test_DATA/Input Output/Chr_Scaffolds ngstar Output AMR-Genes-NgStar.fasta AMR-Genes-NgStar-alleles.fasta”	
 	
         d.	Chromosome-mediated Tetracycline Resistance	
 
-                “perl TetRes.pl rpsJ.fasta Output/Chr_Scaffolds/All_Sequences Output”
-                “perl SeqProt.pl Output”
+                	“perl TetRes.pl rpsJ.fasta Output/Chr_Scaffolds/All_Sequences Output”
+                	“perl SeqProt.pl Output”
 
 
+# Contacts
 
+Dr. Reema Singh: res498@usask.ca; res498@mail.usask.ca
+
+# Alternative links
+
+https://github.com/DillonLab/Gen2EpiGUI
+ftp://www.cs.usask.ca/pub/combi
+
+# Citation
+Singh R, Yarmovich T, Kusalik A, Dillon JA. Gen2EpiGUI: User-Friendly Pipeline for Analyzing Whole-Genome Sequencing Data for Epidemiological Studies of Neisseria gonorrhoeae. Sexually Transmitted Diseases. 2020 Oct 1;47(10):e42-4.
