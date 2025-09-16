@@ -1,8 +1,9 @@
-#!/usr/bin/env Rscript
 #################################################
 # Written by Dr. Reema Singh #
 # Final Release: 2019 #
 #################################################
+
+#!/usr/bin/env Rscript
 args = commandArgs(trailingOnly=TRUE)
 
 library(methods)
